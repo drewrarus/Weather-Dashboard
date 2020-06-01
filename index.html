@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>New York Times Search</title>
+  <!-- Bootstrap CSS CDN  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+
+  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="Weather Dashboard.css">
+
+  <!-- Style to fix the issue of text extending past card length -->
+  <style>
+    .card-body a {
+      word-break: break-all;
+    }
+
+    .articleHeadline {
+      line-height: 1.5;
+    }
+  </style>
+   <script src="https://code.jquery.com/jquery.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+   <!-- Code to the JavaScript File -->
+   <script src="Weather Dashboard.js"></script>
+   <script src="moment.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Main Bootstrap Search -->
+  <div class="container">
+
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron" style="background-color: rgb(32, 90, 76) ; color: white;">
+      <h1 class="text-center">
+        <strong>
+          <i class="fa fa-newspaper-o"></i> Weather Dashboard</strong>
+      </h1>
+    </div>
+
+    <!-- Row for Searching Weather -->
+    <div class="row">
+      <div class="col-sm-12">
+
+        <br>
+        <!--The search parameters -->
+        <div class="card">
+          <div class="card-header">
+            <strong>
+              <i class="fa fa-list-alt"></i> Search Parameters</strong>
+          </div>
+          <div class="card-body">
+
+            <!-- Here we create an HTML Form for handling the inputs-->
+            <form role="form">
+
+              <!-- Here we create the text box for capturing the search term-->
+              <div class="form-group">
+                <label for="search">City:</label>
+                <input type="text" class="inputValue" id="search-term" placeholder="Enter a city">
+              </div>
+             <!-- Here we have our final submit button -->
+             <button type="submit" class="btn btn-default" id="run-search">
+                <i class="fa fa-search"></i> Search</button>
+
+               <button type="submit" class="btn btn-default" id="last-city">
+                  <i class="fa fa-search"></i> Last</button>
+            
+          
+
+            </form>
+        </div>
+    </div>
+
+    <div class="card" id="Today"> Today
+      <p1 style="padding: 2%;"></p1>
+      <p2 style="padding: 2%;"></p2>
+      <p3 style="padding: 2%;"></p3>
+      <p4 style="padding: 2%;"></p4>
+      <img src="" alt="">
+    <div>
+    <div class ="card"id="Day1"> 
+      <p5 style="padding: 2%;"></p5>
+      <p6 style="padding: 2%;"></p6>
+      <p7 style="padding: 2%;"></p7>
+      <p8 style="padding: 2%;"></p8>
+   </div>
+   <div class ="card"id="Day2"> 
+    <p9 style="padding: 2%;"></p9>
+    <p10 style="padding: 2%;"></p10>
+    <p11 style="padding: 2%;"></p11>
+    <p12 style="padding: 2%;"></p12>
+    </div>
+    <div class ="card"id="Day3">
+      <p13 style="padding: 2%;"></p13>
+      <p14 style="padding: 2%;"></p14>
+      <p15 style="padding: 2%;"></p15>
+      <p16 style="padding: 2%;"></p16>
+      </div>
+    <div class ="card"id="Day4">
+      <p17 style="padding: 2%;"></p17>
+      <p18 style="padding: 2%;"></p18>
+      <p19 style="padding: 2%;"></p19>
+      <p20 style="padding: 2%;"></p20>
+      <p21 style="padding: 2%;"></p21>
+    </div>
+    <div class ="card"id="Day5">
+      <p22 style="padding: 2%;"></p22>
+      <p23 style="padding: 2%;"></p23>
+      <p24 style="padding: 2%;"></p24>
+      <p25 style="padding: 2%;"></p25>
+      <p26 style="padding: 2%;"></p26>
+    </div>
+ </div>
+
+<script>
+
+$(document).ready(function(){
+  $("#run-search").click(function(){
+    event.preventDefault(); 
+    var inputValue = document.querySelector(".inputValue").value
+    var key = "&APPID=d6816981d34b1913becd656c53fa9ed6&units=imperial"
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputValue + key
+
+    console.log(queryURL)
+    $.ajax({
+          url:queryURL,
+          dataType:"json",
+          type:"GET",
+    
+    })  
+.then(function(data){
+ console.log(data)
+
+
+
+ var myarray1 = new Array(6);
+
+ myarray1[0]=0;
+ myarray1[1]=1;
+ myarray1[2]=10;
+ myarray1[3]=20;
+ myarray1[4]=30;
+ myarray1[5]=39;
+
+
+//var count;
+
+//for(count = 0; count < 6; count++) {
+
+  
+
+ // var days="Day" .append "count"
+ // var name="p" .append "4*count + 1"
+  // var temp="p" .append "4*count + 2"
+ // var humidity="p" .append "4*count + 3"
+  //var wind="p" .append "4*count + 4"
+
+// "Day" + stringfy(count)
+
+//var cityDiv = $("#Today")
+//var name = $("p1").text (data.city.name)
+//var temp = $("p2").text (data.list[myarray1[count]].main.temp + " F")
+//var humidity = $("p3").text (data.list[myarray1[count]].main.humidity +" % Humid")
+//var wind = $("p4").text ( data.list[myarray1[count]].wind.speed + " MPH Winds")
+
+//cityDiv.prepend(humidity)
+//cityDiv.prepend(temp)
+//cityDiv.prepend(wind)
+//cityDiv.prepend(name)
+//cityDiv.prepend(date)
+
+//}
+
+var fiveday = data
+
+ var cityDiv = $("#Today")
+var name = $("p1").text (fiveday.city.name)
+var temp = $("p2").text (fiveday.list[0].main.temp + " F")
+var humidity = $("p3").text (fiveday.list[0].main.humidity +" % Humid")
+var wind = $("p4").text ( fiveday.list[0].wind.speed + " MPH Winds")
+var myImage = $('<img/>')
+var icon =  data.list[0].weather[0].icon 
+
+myImage.attr('src', "https://openweathermap.org/img/wn/" + icon + ".png" + "'>");
+cityDiv.prepend(humidity)
+cityDiv.prepend(temp)
+cityDiv.prepend(wind)
+cityDiv.prepend(name)
+
+var cityDiv1 = $("#Day1")
+var name1 = $("p5").text (data.city.name)
+var temp1 = $("p6").text (data.list[1].main.temp + "F")
+var humidity1 = $("p7").text (data.list[1].main.humidity +" % Humid")
+var wind1 = $("p8").text ( data.list[1].wind.speed + " MPH Winds")
+
+document.getElementById("Day1").innerHTML = moment().add(1,"days").format("l")
+cityDiv1.prepend(humidity1)
+cityDiv1.prepend(temp1)
+cityDiv1.prepend(wind1)
+cityDiv1.prepend(name1)  
+
+var cityDiv2 = $("#Day2")
+var name2 = $("p9").text (data.city.name)
+var temp2 = $("p10").text (data.list[10].main.temp + " F")
+var humidity2 = $("p11").text (data.list[10].main.humidity +" % Humid")
+var wind2 = $("p12").text ( data.list[10].wind.speed + " MPH Winds")
+
+document.getElementById("Day2").innerHTML = moment().add(2,"days").format("l")
+cityDiv2.prepend(humidity2)
+cityDiv2.prepend(temp2)
+cityDiv2.prepend(wind2)
+cityDiv2.prepend(name2)  
+
+
+var cityDiv3 = $("#Day3")
+var name3 = $("p13").text (data.city.name)
+var temp3 = $("p14").text (data.list[20].main.temp + " F")
+var humidity3 = $("p15").text (data.list[20].main.humidity +" % Humid")
+var wind3 = $("p16").text ( data.list[20].wind.speed + " MPH Winds")
+
+document.getElementById("Day3").innerHTML = moment().add(3,"days").format("l")
+cityDiv3.prepend(humidity3) 
+cityDiv3.prepend(temp3)
+cityDiv3.prepend(wind3)
+cityDiv3.prepend(name3)  
+
+var cityDiv4 = $("#Day4")
+var name4 = $("p17").text (data.city.name)
+var temp4 = $("p18").text (data.list[30].main.temp + " F")
+var humidity4 = $("p19").text (data.list[30].main.humidity +" % Humid")
+var wind4 = $("p20").text ( data.list[30].wind.speed + " MPH Winds")
+var date4 = $("p21").text (data.list[30].dt_txt)
+ 
+document.getElementById("Day4").innerHTML = moment().add(4,"days").format("l")
+cityDiv4.prepend(humidity4)
+cityDiv4.prepend(temp4)
+cityDiv4.prepend(wind4)
+cityDiv4.prepend(name4) 
+
+var cityDiv5 = $("#Day5")
+var name5 = $("p22").text (data.city.name)
+var temp5 = $("p23").text (data.list[39].main.temp + " F")
+var humidity5 = $("p24").text (data.list[39].main.humidity +" % Humid")
+var wind5 = $("p25").text ( data.list[39].wind.speed + " MPH Winds")
+ 
+document.getElementById("Day5").innerHTML = moment().add(5,"days").format("l")
+cityDiv5.prepend(humidity5)
+cityDiv5.prepend(temp5)
+cityDiv5.prepend(wind5)
+cityDiv5.prepend(name5) 
+
+
+
+})  
+  })
+})
+
+  
+</script>
+<body>
+    
+<html>
